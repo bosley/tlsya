@@ -9,16 +9,43 @@ It's designed to be easy to use while also providing flexibility for more advanc
 - Customize certificate details using your own x509.Certificate template
 - Specify IP addresses to be included in the certificate
 - Easy integration with Go web servers, including Gin
+- Command-line interface (CLI) for quick certificate generation
 
 ## Installation
+
+To use tlsya as a library in your Go project:
 
 ```
 go get github.com/bosley/tlsya
 ```
 
+To build and install the CLI tool:
+
+```
+git clone https://github.com/bosley/tlsya.git
+cd tlsya
+go build -o tlsya-cli main.go
+sudo mv tlsya-cli /usr/local/bin/tlsya-cli
+```
+
 ## Usage
 
-### Basic Usage
+### CLI Usage
+
+After installing the CLI tool, you can generate TLS certificates from the command line:
+
+```
+tlsya-cli -ips=127.0.0.1,192.168.1.1 -key=server.key -cert=server.crt
+```
+
+Options:
+- `-ips`: Comma-separated list of IP addresses (required)
+- `-key`: Path to save the private key (default: "key.pem")
+- `-cert`: Path to save the certificate (default: "cert.pem")
+
+### Library Usage
+
+#### Basic Usage
 
 ```go
 import "github.com/bosley/tlsya"
@@ -35,7 +62,7 @@ if err != nil {
 }
 ```
 
-### Advanced Usage
+#### Advanced Usage
 
 ```go
 import (
@@ -105,4 +132,3 @@ func main() {
 ```
 
 This will start a Gin server with HTTPS enabled on port 8080.
-
