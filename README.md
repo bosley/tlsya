@@ -19,13 +19,10 @@ To use tlsya as a library in your Go project:
 go get github.com/bosley/tlsya
 ```
 
-To build and install the CLI tool:
+To install the CLI tool:
 
 ```
-git clone https://github.com/bosley/tlsya.git
-cd tlsya
-go build -o tlsya-cli main.go
-sudo mv tlsya-cli /usr/local/bin/tlsya-cli
+go install github.com/bosley/tlsya/cmd/cli@latest
 ```
 
 ## Usage
